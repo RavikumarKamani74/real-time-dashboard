@@ -23,6 +23,18 @@ A serverless real-time dashboard built with **React** and powered by **AWS Lambd
 
 ---
 
+Architecture Overview
++-------------+       +-------------+       +-------------+
+|   React UI  | <---> | API Gateway | <---> |   Lambda    |
+|  (S3/CF)    |       |   (REST)    |       |  (Python)   |
++-------------+       +-------------+       +-------------+
+                                               |
+                                               ↓
+                                         +-------------+
+                                         | DynamoDB    |
+                                         +-------------+
+
+
 ## 📦 Features
 
 - 📡 Fetches live CPU metrics from DynamoDB via API Gateway
