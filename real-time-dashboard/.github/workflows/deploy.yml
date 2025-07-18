@@ -1,0 +1,39 @@
+name: 🚀 Deploy React Dashboard to S3 + CloudFront
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: ⬇️ Checkout source code
+      uses: actions/checkout@v3
+
+    - name: 🔐 Configure AWS credentials from IAM Role
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::358238714507:role/GitHubOIDCRole
+        aws-region: ap-south-1
+
+    - name: 📦 Install dependencies
+      run: npm install
+
+    - name: 🛠️ Build React app
+      run: npm run build
+
+    - name: ☁️ Sync build to S3 bucket
+      run: aws s3 sync build/ s3://real-time-metrics --delete
+
+    - name: 🚀 Invalidate CloudFront cache
+      run: |
+        aws cloudfront create-invalidation \
+          --distribution-id E2141FI3L1865X \
+          --paths "/*"
