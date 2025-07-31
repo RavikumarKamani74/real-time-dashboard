@@ -71,8 +71,12 @@ This project uses GitHub Actions to automate frontend deployment:
   - Done in seconds
 
 > AWS credentials are assumed using GitHub OIDC with role:  
-> `arn:aws:iam::358238714507:role/GitHubOIDCRole`
+> `arn:aws:iam::<account number>:role/GitHubOIDCRole`
 
+## 🚀 Deployment Overview
+- Frontend is deployed using `aws s3 sync` to an S3 bucket.
+- Backend Lambda functions deployed via Terraform.
+- GitHub Actions handles CI/CD with OIDC for secure deployments.
 ---
 
 ## 🧪 Local Development
