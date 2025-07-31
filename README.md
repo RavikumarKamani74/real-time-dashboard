@@ -35,9 +35,8 @@ Architecture Overview
                                          +-------------+
 
  ![Uploading architecture.png…]()
+
                                         
-
-
 ## 📦 Features
 
 - 📡 Fetches live CPU metrics from DynamoDB via API Gateway
