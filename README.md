@@ -34,7 +34,7 @@ Architecture Overview
                                          | DynamoDB    |
                                          +-------------+
 
- ![Uploading architecture.png…]()
+ ![Architecture Diagram](architecture.png)
 
                                         
 ## 📦 Features
